@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="" rel="icon" type="image/x-icon">
+    <title>REGISTER YOUR AGENCY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link href="./agencyRegistration.css" rel="stylesheet">
+    <script src="./agencyRegistration.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <i class="ri-menu-line" data-function="open-menu"></i>
+            <a href="#" id="logo">EMERGENCY TIMES</a>
+            <div class="menu">
+                <i class="ri-close-line" data-function="close-menu"></i>
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="">HOME</a></li>
+                    <li class="nav-item"><a href="">EMERGENCY NUMBERS</a></li>
+                    <li class="nav-item"><a href="">AGENCY LOGIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>REGISTER</h1>
+            <small>Please Enter Details of Your Agency for Registration</small>
+            <form action="" method="post" data-valid="false">
+                <div class="form-element">
+                    <label for="agency-name">NAME</label>
+                    <input type="text" name="Name" id="agency-name" title="Enter name of your Agency" placeholder="Agency-Name" pattern="^[A-Za-z]+$">
+                    <small class="err"><i class="ri-error-warning-line"></i>Must contain only alphabets</small>
+                </div>
+                <div class="form-element">
+                    <label for="agency-email">EMAIL</label>
+                    <input type="email" name="Email" id="agency-email" title="Enter email of your Agency" placeholder="Agency-email" pattern="^[\w\.-]+@[\w\.-]+\.\w+$">
+                    <small class="err"><i class="ri-error-warning-line"></i>Enter valid email address</small>
+                </div>
+                <div class="form-element" data-is-verified="false">
+                    <label for="agency-number">Phone Number</label>
+                    <div class="number-inputs">
+                        <select name="country-code" id="country-code">
+                            <option value="91" selected>India (+91)</option>
+                        </select>
+                        <div class="number-verify">
+                            <input pattern="^[0-9]+$" type="tel" name="Number" id="agency-number" title="Enter your Phone Number">
+                            <div class="send-code">
+                                <button type="button" class="send-otp" disabled>Verify</button>
+                                <i class="ri-checkbox-circle-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="err-msg hide"><i class="ri-error-warning-line"></i> Invalid phone number</small>
+                </div>
+                <div class="form-element frame-otp" data-visible="false">
+                    <label for="otp-input">OTP</label>
+                    <input type="text" name="OTP" id="otp-input" title="Enter OTP to verify your phone number" pattern="[0-9]{6}" maxlength="6">
+                    <small class="resend-otp">Didn't receive code? Resend <span class="timer">00:20</span></small>
+                </div>
+                <div class="form-element" data-visible="false">
+                    <label for="government-id">Government ID</label>
+                    <div class="govID-inputs">
+                        <select name="type-of-id" id="id-type">
+                            <option selected disabled>Type of ID</option>
+                            <option value="passport">Passport</option>
+                            <option value="driving-license">Driving License</option>
+                            <option value="national-id">National ID</option>
+                        </select>
+                        <input type="file" name="upload-id" id="government-id" placeholder="Upload document">
+                    </div>
+                    <small class="err-msg hide"><i class="ri-error-warning-line"></i> Select valid ID</small>
+                </div>
+                <div class="form-element" data-visible="false">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" name="adminPassword" id="initial-password" placeholder="(must contain only alphabets, numbers, and $, _, -)">
+                        <div class="password-visibility-icons">
+                            <i class="ri-eye-line show-password hide" data-password-type="text"></i>
+                            <i class="ri-eye-off-line hide-password" data-password-type="password"></i>
+                        </div>
+                    </div>
+                    <small class="err-msg hide"><i class="ri-error-warning-line"></i> Invalid Password (Doesn't match requirements)</small>
+                </div>
+                <div class="form-element" data-visible="false">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" name="adminPassword" id="confirm-password">
+                        <div class="password-visibility-icons">
+                            <i class="ri-eye-line show-password hide" data-password-type="text"></i>
+                            <i class="ri-eye-off-line hide-password" data-password-type="password"></i>
+                        </div>
+                    </div>
+                    <small class="err-msg hide"><i class="ri-error-warning-line"></i> Passwords do not match</small>
+                </div>
+                <button type="submit" data-function="register" disabled>Register</button>
+                <p>Already have an account? <a href="">Login</a></p>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
