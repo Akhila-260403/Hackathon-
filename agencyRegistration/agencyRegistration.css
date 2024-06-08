@@ -1,0 +1,331 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto Slab", serif;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(235, 175, 103);
+}
+a{
+    color:gold;
+}
+
+li {
+    font-style: oblique;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+i {
+    padding: 0.5rem;
+    color: rgb(17, 14, 17);
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+nav {
+    font-size: medium;
+    background-color: rgb(102, 8, 20);
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+nav a {
+    margin-left: 0.25rem;
+    letter-spacing: 1px;
+}
+
+nav > .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+    height: 100vh;
+    padding: 0.75rem;
+    background-color: rgb(182, 15, 48);
+    border-radius: 0 0.5rem 0.5rem 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform 200ms ease;
+    z-index: 10;
+}
+
+nav.menu > i[data-function="close-menu"] {
+    color: var(--secondary);
+    font-size: 2rem;
+    margin-left: calc(90% - 0.75rem);
+}
+
+nav .menu > ul.nav-links {
+    margin-block-start: 2rem;
+    overflow: hidden;
+}
+
+.nav-links > li.nav-item {
+    padding: var(--padding) 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 200ms ease;
+    cursor: pointer;
+}
+
+.nav-item:is(:hover, :focus) a {
+    margin-left: 0.75rem;
+}
+
+main {
+    padding: var(--padding);
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+main > .container {
+    padding: 1.5rem 2rem;
+    width: clamp(300px, 40%, 35rem);
+}
+
+.container form {
+    margin-top: 1rem;
+}
+
+form > div.form-element {
+    display: flex;
+    flex-direction: column;
+    padding-block: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font);
+}
+
+.form-element :is(input, select) {
+    padding: 0.75rem 0.5rem;
+    margin-top: 0.25rem;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    border-radius: var(--brdr-radius);
+    border: 1px solid var(--primary);
+    outline: 0;
+}
+
+.form-element input::placeholder {
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: 0.5px;
+}
+
+.form-element :is(input, select):focus {
+    border: 2px solid var(--secondary);
+}
+
+.form-element > small.err > i {
+    color: rgb(234, 23, 23);
+    margin-top: 0.5rem;
+    padding: 0;
+}
+
+.form-element > small.err > i {
+    padding-inline: 0;
+    font-size: 1rem;
+}
+
+.form-element :where(.number-inputs, .govID-inputs) {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-element :where(.number-inputs) > * {
+    flex: 1;
+    letter-spacing: 1px;
+    height: 100%;
+}
+
+.form-element :where(.number-inputs) {
+    align-items: center;
+}
+
+.form-element :where(.number-inputs) > .number-verify {
+    display: flex;
+    border: 1px solid var(--primary);
+    border-radius: 0.4rem;
+    background-color: rgb(128, 110, 202);
+}
+
+.form-element :where(.number-inputs) > .number-verify > input[type="tel"] {
+    border: 0;
+    margin-top: 0;
+}
+
+.send-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.send-code > i {
+    display: none;
+    font-size: 1.5rem;
+    color: rgb(59, 233, 12);
+    margin-inline: 0.76rem 0.3rem;
+}
+
+.form-element :where(.number-inputs) > .number-verify button.send-otp {
+    display: grid;
+    place-items: center;
+    background: transparent;
+    font-size: calc(1rem / 1.1);
+    font-family: inherit;
+    border: 0;
+    border-left: 1px solid var(--primary);
+    padding: 0;
+    padding-inline: 0.5rem;
+    margin-block: 0.4rem;
+    cursor: pointer;
+}
+
+.form-element :where(label[for="otp-input"]) .resend-otp {
+    margin-top: 0.5rem; 
+}
+
+.resend-otp > .timer {
+    color: #000;
+    font-weight: 600;
+}
+
+.form-element :where(.govID-inputs) > input[type="file"] {
+    border: 1px solid var(--primary);
+    flex: 1;
+    margin-left: 1rem;
+    padding: 0;
+    height: 100%;
+}
+
+::-webkit-file-upload-button {
+    background-color: transparent;
+    border: 0;
+    border-right: 1px solid var(--primary);
+    outline: 0;
+    padding: 0.9rem 1rem;
+    margin-right: 1rem;
+    background-color: deeppink;
+}
+
+.form-element:where(.password-input) {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary);
+    border-radius: 0.3rem;
+}
+
+.form-element:where(.password-input) > input {
+    flex: 1;
+    margin-top: 0;
+    border: 0;
+    outline: 0;
+}
+
+.form-element:where(.password-input) > .password-visibility-icons {
+    width: 3rem;
+    position: relative;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-left: 1px solid var(--primary);
+    padding: 1rem;
+}
+
+.form-element:where(.password-input) > .password-visibility-icons > i {
+    position: absolute;
+    font-size: 1.25rem;
+}
+
+div[data-visible="false"] {
+    display: none !important;
+}
+
+form button[data-function="register"] {
+    width: 100%;
+    background-color: #000;
+    display: block;
+    padding: 1rem;
+    margin-inline: auto;
+    margin-block: 3.5rem 1rem;
+    color: #fff;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: 2px solid currentColor;
+    outline: none;
+    border-radius: 0.4rem;
+    transition: all 100ms ease;
+}
+
+form button[data-function="register"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+form button[data-function="register"]:not(:disabled):hover {
+    font-weight: 600;
+    border: 2px solid #000;
+}
+
+form > p:last-child {
+    font-size: calc(1rem / 1.15);
+    text-align: center;
+    color: rgb(231, 16, 16);
+}
+
+form > p:last-child > a {
+    color: #000;
+    font-weight: 500;
+}
+
+form > p:last-child > a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 575px) {
+    nav .menu {
+        width: 65%;
+        font-size: 1rem;
+    }
+    main > .container {
+        padding: .5rem .75rem;
+        width: 100%;
+    }
+    .form-element :is(input, select) {
+        width: 100%;
+    }
+    .form-element :where(.govID-inputs) > input[type="file"] {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1024px) {
+    nav .menu {
+        width: 65%;
+        font-size: 1rem;
+    }
+    main > .container {
+        padding: .5rem .75rem;
+        width: 100%;
+    }
+    .form-element :is(input, select) {
+        width: 100%;
+    }
+    .form-element :where(.number-inputs, .govID-inputs) {
+        flex-wrap: wrap;
+    }
+    .form-element :where(.govID-inputs) > input[type="file"] {
+        margin-left: 0;
+    }
+}
+
+@
